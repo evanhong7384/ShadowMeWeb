@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Register from "./pages/Register.js";
+import Profile_edit from "./pages/Profile_edit.js"
 
 import "../utilities.css";
 
@@ -47,6 +48,7 @@ const App = () => {
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
 	<Register path="/register" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+  <Profile_edit path="/profile_edit"/>
         <NotFound default />
       </Router>
     </>
