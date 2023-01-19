@@ -26,6 +26,11 @@ function getOrCreateUser(user) {
     const newUser = new User({
       name: user.name,
       googleid: user.sub,
+      institution: '',
+      resume: '',
+      linkedin: '',
+      location: '',
+      bio: '',
     });
 
     return newUser.save();
