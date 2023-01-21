@@ -1,15 +1,17 @@
 import React from "react";
 import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/google";
-
+//const User = require("./models/user");
 import "../../utilities.css";
 import "./Profile_edit.css";
+import { post } from "../../utilities";
 //import "./Skeleton.css";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID = "847255392628-tdlh0r7m9s9vq6isrb54ind9k7sk34hg.apps.googleusercontent.com";
 
-const Profile_edit = () => {
+const Profile_edit = (props) => {
   return (
+    <form>
     <div className="personal_info">
         <label for="Name">Name:
         <input type="text" id="Name" name="Name" />
@@ -34,7 +36,28 @@ const Profile_edit = () => {
         <label for="Bio">Bio:
         <input type="text" id="Bio" name="Bio"/>
         </label>
+
+        <div> 
+          <button type="submit" onClick="saveInfo()"  >save</button>
+        </div>
+        <script>
+          function saveInfo(){
+            post('/api/pfedit',{name: document.getElementById("Name"),
+                                institution: document.getElementById("Institutions"),
+                                resume: document.getElementById("Resume"),
+                                linkedin: document.getElementById("Linkedin"),
+                                location: document.getElementById("Location"),
+                                bio: document.getElementById("Bio")}).then((response)=>{
+              console.log(response)
+            })
+          }
+        </script>
+        
     </div>
+    </form>
+    
+
+    
 
 
     
