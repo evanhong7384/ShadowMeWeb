@@ -9,7 +9,21 @@ import { post } from "../../utilities";
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
 const GOOGLE_CLIENT_ID = "847255392628-tdlh0r7m9s9vq6isrb54ind9k7sk34hg.apps.googleusercontent.com";
 
-const Profile_edit = (props) => {
+
+ const saveInfo = () =>{
+  alert('submitted');
+  post('/api/pfedit',{name: document.getElementById("Name"),
+  institution: document.getElementById("Institutions"),
+  resume: document.getElementById("Resume"),
+  linkedin: document.getElementById("Linkedin"),
+  location: document.getElementById("Location"),
+  bio: document.getElementById("Bio")}).then((response)=>{
+  console.log(response)
+  
+ })   
+}
+
+const Profile_edit = () => {
   return (
     <form>
     <div className="personal_info">
@@ -36,22 +50,13 @@ const Profile_edit = (props) => {
         <label for="Bio">Bio:
         <input type="text" id="Bio" name="Bio"/>
         </label>
+        
 
         <div> 
-          <button type="submit" onClick="saveInfo()"  >save</button>
+          <button id='submit' type="submit"  onClick={saveInfo}>save</button>
         </div>
-        <script>
-          function saveInfo(){
-            post('/api/pfedit',{name: document.getElementById("Name"),
-                                institution: document.getElementById("Institutions"),
-                                resume: document.getElementById("Resume"),
-                                linkedin: document.getElementById("Linkedin"),
-                                location: document.getElementById("Location"),
-                                bio: document.getElementById("Bio")}).then((response)=>{
-              console.log(response)
-            })
-          }
-        </script>
+        
+        
         
     </div>
     </form>
